@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ecs-execution-role" {
-  name               = "${var.cluster_name}-ecs-execution-role-${terraform.workspace}"
+  name               = "${var.cluster_name}-${var.app-name}-ecs-execution-role-${terraform.workspace}"
   path               = "/"
   assume_role_policy = data.aws_iam_policy_document.ecs-tasks-policy.json
 }
@@ -10,7 +10,7 @@ resource "aws_iam_role_policy_attachment" "ecs-execution-role-attachment" {
 }
 
 resource "aws_iam_role" "ecs-service-role" {
-  name               = "${var.cluster_name}-ecs-service-role-${terraform.workspace}"
+  name               = "${var.cluster_name}-${var.app-name}-ecs-service-role-${terraform.workspace}"
   path               = "/"
   assume_role_policy = data.aws_iam_policy_document.ecs-policy.json
 }
