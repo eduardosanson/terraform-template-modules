@@ -1,4 +1,3 @@
-
 resource "aws_lb_listener" "lb_listener" {
   load_balancer_arn = var.load_balancer_arn
   port              = var.lb_port_redirect
