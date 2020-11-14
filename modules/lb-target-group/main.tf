@@ -4,26 +4,13 @@ resource "aws_lb_target_group" "target_group" {
   protocol = var.protocol != "" ? var.protocol : "HTTP"
   vpc_id   = var.vpc_id
 
-  dynamic "health_check" {
-    for_each = var.lb_type == "network" ? [
-      {type:"interval", field: 60},
-      {type:"port", field: 80},
-      {type:"protocol", field:var.protocol},
-      {type:"healthy_threshold", field:3},
-      {type: "unhealthy_threshold", field: 3}
-    ] :
-    [
-      {type:"path", field: var.health_check_path},
-      {type:"interval", field: 10},
-      {type:"timeout", field: 5},
-      {type:"healthy_threshold", field: 3},
-      {type:"unhealthy_threshold", field: 2},
-      {type: "matcher", field: 200}
-    ]
-    content {
-      type  = health_check.value.type
-      field = health_check.value.field
-    }
+  health_check {
+    path                = var.health_check_path
+    interval            = 10
+    timeout             = 5
+    healthy_threshold   = 3
+    unhealthy_threshold = 2
+    matcher             = 200
   }
 
   lifecycle {
