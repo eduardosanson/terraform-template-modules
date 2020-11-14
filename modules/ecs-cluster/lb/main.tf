@@ -18,7 +18,7 @@ resource "aws_lb" "cluster_lb" {
 
 resource "aws_api_gateway_vpc_link" "vpc_link" {
   count       = var.vpc_lik ? 1 : 0
-  name        = var.cluster_name + "-vpc-link"
+  name        = "${var.cluster_name}-vpc-link"
   description = "link to lb"
   target_arns = [aws_lb.cluster_lb.arn]
 }
