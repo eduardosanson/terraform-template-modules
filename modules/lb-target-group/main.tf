@@ -21,7 +21,7 @@ resource "aws_lb_target_group" "target_group" {
 resource "aws_lb_listener" "lb_listener" {
   load_balancer_arn = var.load_balancer_arn
   port              = var.lb_port_redirect
-  protocol          = var.protocol
+  protocol          = var.protocol != "" ? var.protocol : "HTTP"
 
   default_action {
     target_group_arn = aws_lb_target_group.target_group.arn
