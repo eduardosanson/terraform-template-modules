@@ -1,5 +1,5 @@
 resource "aws_lb" "load_balancer" {
-  name                       = "${var.lb-name}-${var.lb-type}-${terraform.workspace}"
+  name                       = "${var.lb-name}-${var.lb-type }-${terraform.workspace}"
   internal                   = false
   load_balancer_type         = var.lb-type
   security_groups            = var.lb-type == "network" ? [] : [var.sg_id]
