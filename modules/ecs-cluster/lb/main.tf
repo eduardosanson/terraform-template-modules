@@ -2,7 +2,7 @@ resource "aws_lb" "cluster_lb" {
   name                       = "${var.cluster_name}-lb-${terraform.workspace}"
   internal                   = false
   load_balancer_type         = var.lb-type
-  security_groups            = [var.sg_id]
+  security_groups            = var.lb-type == "network" ? [] : [var.sg_id]
   subnets                    = var.vpc_subnets
   enable_deletion_protection = false
 
