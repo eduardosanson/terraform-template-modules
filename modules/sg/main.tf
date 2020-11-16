@@ -24,8 +24,8 @@ resource "aws_security_group" "sg-public" {
   }
 
   ingress {
-    from_port   = 6379
-    to_port     = 6379
+    from_port   = 0
+    to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
