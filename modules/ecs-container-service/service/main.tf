@@ -1,5 +1,5 @@
 data "template_file" "task_definitions_template" {
-  template = file(var.task_defination_path)
+  template = file(var.task_definition_path)
   vars     = {
     env                   = terraform.workspace
     name                  = var.container_name

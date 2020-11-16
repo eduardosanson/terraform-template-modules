@@ -6,4 +6,4 @@ variable "ecs_cluster_id"       {type = string}
 variable "container_name"       {type = string}
 variable "lb_port_redirect"     {type = number}
 variable "lb_target_group_arn"  {type = list(string)}
-variable "task_defination_path" {type = string}
+variable "task_definition_path" {type = string}
