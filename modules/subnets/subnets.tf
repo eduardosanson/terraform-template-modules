@@ -7,7 +7,7 @@ resource "aws_subnet" "public_subnets" {
   availability_zone = "${var.region}${var.azs[count.index]}"
 
   tags = {
-    Name = "${var.subnets_prefix}${var.public_cdirs[count.index]}"
+    Name = "${var.subnets_prefix}${var.public_cidrs[count.index]}"
   }
 }
 
