@@ -11,7 +11,7 @@ resource "aws_launch_configuration" "ec2_for_ecs" {
   user_data            = data.template_file.user_data.rendered
   security_groups      = var.security_group_ids
   key_name             = aws_key_pair.user.key_name
-  associate_public_ip_address = false
+  associate_public_ip_address = true
 
   lifecycle {
     create_before_destroy = true
